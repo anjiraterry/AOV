@@ -3,7 +3,7 @@ import {Button ,Menu , Typography, Avatar} from 'antd'
 import {Link} from 'react-router-dom';
 import {HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined} from '@ant-design/icons'
 import icon from '../images/aov.png'
-
+import bg from '../images/bg.jpeg'
 
 const Navbar = () => {
   const logout = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
   };
   
   return (
-    <div className='fixed w-[100%] flex px-20 justify-between items-center  bg-[#001529] z-20'>
+    <div style={{  }}  className='fixed w-[100%] bg-gray-900 flex px-20 justify-between items-center z-20'>
       <div className='container flex justify-between items-center '>
         <Link to='/' className=''>
             <img src={icon} className='w-32'/>
@@ -30,7 +30,7 @@ const Navbar = () => {
 
         <div className='text-white nav '>
                 <Link to = "/login" >Login</Link>
-                <Link to = "/cryptocurrencies" className='bg-orange-600 p-12 rounded-xl' >Get Started</Link>
+                <Link to = "/signup" className='bg-orange-600 p-12 rounded-xl' >Get Started</Link>
         </div>
         </div>
 

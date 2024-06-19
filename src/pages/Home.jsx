@@ -3,10 +3,12 @@ import millify from 'millify';
 import {Typography, Row, Col, Statistic} from 'antd';
 import {Link} from 'react-router-dom'
 import { useGetCryptosQuery } from '../services/cryptoApi';
-import {Cryptocurrencies , Navbar, News} from '../components'
+import {Cryptocurrencies , Navbar, News, SectionII} from '../components'
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import Rates from '../components/Rates';
+import bg from '../images/bg.jpeg'
+import bg2 from  '../images/bgwhite.jpeg'
 
 const{Title} = Typography
 
@@ -19,14 +21,21 @@ const Home = () => {
 
   return (
     <>
-     <div className=' bg-gray-900'>
+    <div style={{ backgroundImage:`url(${bg})` }} className='bg-cover' >
+     <div className=''>
    <Hero/>
    </div>
-    <div className=' bg-gray-900'>
+    <div className=' '>
       <Section/>
    </div>
+   </div>
+   <div  style={{ backgroundImage:`url(${bg2})` }} className='bg-cover'>
+    <div className=''>
+      <SectionII/>
+    </div>
    <div> 
     <Rates/>
+   </div>
    </div>
  {/*<div className=' p-24'>
   

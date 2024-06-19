@@ -7,6 +7,7 @@ import shield from '../images/shield.png'
 import { Link } from 'react-router-dom'
 import { ArrowRightOutlined, UserOutlined, SafetyOutlined, BarChartOutlined } from '@ant-design/icons'
 import classNames from 'classnames';
+import creambg from '../images/creambg.jpeg'
 
 
 
@@ -44,7 +45,7 @@ const Section = () => {
 
   return (
     <div className='p-24'>
-        <div  className=' bg-black bg-opacity-60 border-2 border-white p-10  text-white flex  relative justify-between rounded-3xl '>
+        <div  className='  bg-opacity-60 border-2 border-white p-10  text-white flex  relative justify-between rounded-3xl '>
             <div className=' border-white border-r-2  p-8' >
                 <h1 className='text-3xl mb-4 font-bold'> Why Trade with AOV? </h1>
                 <p className='font-thin'>
@@ -105,7 +106,7 @@ const Section = () => {
             </div>
           
         </div>
-        <div className='relative text-white mt-12'>
+        <div className='relative text-white mt-12 mb-32'>
         <h1 className='text-3xl font-bold'> Our Services</h1>
         <p className='font-thin text-wrap'>We pride ourselves on our commitment to swift and smooth trading with high transaction rates.<br/> Our goal is to make the selling process as easy and efficient as possible for our customers</p>
             
@@ -130,7 +131,7 @@ const Section = () => {
         
        
             </div>
-            <div className='flex justify-between items-center border-[10px] border-rose-950 bg-rose-100 mt-24 text-gray-900 rounded-3xl'>
+            <div  style={{ backgroundImage:`url(${creambg})` }} className='flex bg-cover justify-between items-center border-[12px] border-[#B18A8A] bg-rose-100 mt-24 text-gray-900 rounded-3xl'>
                 <div className='p-20 flex-flex-col gap-10 flex-1'>
                     <h3 className='text-xl'>Join Today!</h3>
                     <h1 className='text-3xl font-bold py-8 text-nowrap'>Become an <br/> AOV Ambassador</h1>

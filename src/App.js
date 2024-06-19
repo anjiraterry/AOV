@@ -5,6 +5,7 @@ import { useState } from 'react'
 import './App.css'
 import {Navbar, Exchanges, Cryptocurrencies , News, CryptoDetails,} from './components'
 import {Login, Signup, Home,  About, Faq , Contact, Terms  } from './pages'
+import Footer from './components/Footer'
 
 
 
@@ -44,16 +45,8 @@ const App = () => {
             </Layout>
 
        
-        <div className='footer'>
-            <Typography.Title  level={5} style={{ color:'white', textAlign:'center'}}>
-                AOV<br/>
-                All rights reserved
-            </Typography.Title>
-            <Space>
-                <Link to='/'> Home</Link>
-                <Link to='/exchanges'> Exchanges</Link>
-                <Link to='/news'>News</Link>
-            </Space>
+        <div className=''>
+          <Footer/>
 
         </div>
         </div>

@@ -4,7 +4,7 @@ import icon from '../images/aov.png'
 import { Link } from 'react-router-dom';
 import {ConfigProvider, Input , Form, Checkbox, Button } from 'antd';
 import {  EyeInvisibleOutlined, EyeOutlined, GoogleCircleFilled, FacebookFilled, AppleFilled } from "@ant-design/icons";
-
+import bg from '../images/bg.jpeg'
 
 
 const Login = () => {
@@ -59,7 +59,7 @@ const Login = () => {
       }}
     >
        
-        <div className='bg-gray-900 flex flex-col gap-5 justify-center items-center w-screen h-screen left-0 absolute'>
+        <div style={{ backgroundImage:`url(${bg})` }} className='bg-cover flex flex-col gap-5 justify-center items-center w-screen h-screen left-0 absolute'>
         <img src={icon} className='w-32'/>
             <div className='border-solid border-2 flex flex-col justify-center items-center  border-#fff p-6 rounded-3xl'>
               <p className='text-2xl text-white '>Sign in</p>

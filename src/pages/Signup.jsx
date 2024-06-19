@@ -1,50 +1,116 @@
 import React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import icon from '../images/aov.png'
-import { Link } from 'react-router-dom';
 import {ConfigProvider, Input , Form, Checkbox, Button ,Select, Space } from 'antd';
 import {  EyeInvisibleOutlined, EyeOutlined, GoogleCircleFilled, FacebookFilled, AppleFilled , ArrowLeftOutlined } from "@ant-design/icons";
 import { DatePicker } from "antd";
 import { Radio } from 'antd';
+import { registerUser } from '../helper/helper'
+import { useFormik } from 'formik';
+import { registerValidation } from '../helper/validate';
+import { Link, useNavigate } from 'react-router-dom'
+import moment from 'moment'
+import toast, { Toaster } from 'react-hot-toast';
+import bg from '../images/bg.jpeg'
 
 
 
-
-const Signup = (props) => {
-
+const Signup = () => {
+  const navigate = useNavigate()
+  const [file, setFile] = useState()
   
- const [steps, setSteps] = useState(0)
+  {/* 
+  const formik = useFormik({
+    initialValues : {
+      email: 'doyol56239@cnogs.com',
+      name: 'example123',
+      password : 'admin@123',
+      gender: 'man',
+      select: 'friends'
+    },
+    validate : registerValidation,
+    validateOnBlur: false,
+    validateOnChange: false,
+    onSubmit : async values => {
+    values = await Object.assign(values, { profile : file || ''})
+      let registerPromise = registerUser(values)
+      toast.promise(registerPromise, {
+        loading: 'Creating...',
+        success : <b>Register Successfully...!</b>,
+        error : <b>Could not Register.</b>
+      });
+
+      registerPromise.then(function(){ navigate('/')});
+    }console.log(values) }
+  })
+ */} 
+
+ 
 
 
-  const handleNext= () => {
-      setSteps(steps + 1);
-      if(steps > 3){
-        setSteps(0)
-      }
-  }
+const [email, setEmail] = useState('');
+const [password , setPassword] = useState('');
+const [name , setName] = useState('');
+const [value, setValue] = useState(1);
+const [find, setFind] =useState('')
+const [dob , setDob] = useState('')
 
-  const handleBack = () => {
-    setSteps(steps - 1);
-}
 
-  const selectChange = (value) => {
-  console.log(`selected ${value}`);
+
+  const selectChange = (val) => {
+  console.log(`selected ${val}`);
+  setFind(val)
 };
+
+const onName = (e) => {
+  setName(e.target.value)
+
+
+
+}
 
   function onChange(date, dateString) {
     console.log(date, dateString);
+    const formating = moment(date).format("MMM Do YYYY")
+    setDob(formating)
   }
-  const [email, setEmail] = useState('');
-  const [password , setPassword] = useState('');
 
-  console.log(password)
-
-  const [value, setValue] = useState(1);
+  const onRadio= (e) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      setEmailError('Valid email address')
+     } else{ setEmailError('Invalid email')}
   };
 
+
+ 
+
+  const register = [
+    {
+      email: email,
+      password: password,
+      name: name,
+      dob: dob,
+      radio: value,
+      select: find
+    }
+  ]
+
+  const handleSubmit=(e) =>{
+    e.preventDefault()
+    console.log(register)
+  }
+
+  
+
+ 
+
+//Password validation check
 
   const [checked, setChecked] = useState(false)
   const [checkedtwo, setCheckedtwo] = useState(false)
@@ -68,50 +134,77 @@ const Signup = (props) => {
     if(pass.length > 9 ){
       setCheckedthree(true)
     }else{ setCheckedthree(false)}
-    
-   
-
-  };
- 
-
-
- 
+     
+    if (pass.match(letter) && pass.match(specialChars ) && (pass.length > 9 )) {
+      setPasswordError('Valid password')
+     } else{ setPasswordError('Invalid Password')}
 
 
+    };
 
-   
+    //----------------------------------------
 
-   const checktwo= () =>{
-   if(password.match(numbers && specialChars )){
-    setChecked(true)
-   }else{
-    setChecked(false)
-   }}
 
-   const checkthree = () =>{
-    if(password.length > 10 ){
-      setChecked(true)
-     }else{
-      setChecked(false)
-     }}
-   
+    //Login Form Next and Previous
+
+    const [steps, setSteps] = useState(0)
+
+
+    const handleNext= () => {
+        setSteps(steps + 1);
+        if(steps > 3){
+          setSteps(0)
+        }
+    }
   
+    const handleBack = () => {
+      setSteps(steps - 1);
+  }
+ //------------------------------------------
 
- const passwordCheck= () =>{
-  var specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/ 
-  var lowerCase = /[a-z]/g;
-  var upperCase = /[A-Z]/g;
-  var numbers = /[0-9]/g;
+//Form validation
+
+ const [emailError,setEmailError] = useState("")
+ const [passwordError,setPasswordError] = useState("")
+ const[nameError, setNameError] = useState("")
+const [dateError , setDateError] = useState('')
 
 
-  
- }
-  
-  const onRadio= (e) => {
-    console.log('radio checked', e.target.value);
-    setValue(e.target.value);
-  };
-  
+ const emailval =(e) =>{
+ e.preventDefault()
+
+  if (!email) {
+  setEmailError( 'Email required')
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+   setEmailError('Invalid email address')
+  } else{
+    handleNext()
+  }
+}
+
+const passwordval = (e)=>{
+  e.preventDefault()
+  if (!password) {
+    setPasswordError( 'Password required')}
+ else if(checked ===false || checkedtwo ===false || checkedthree === false) {
+    setPasswordError('Invalid Password')
+  } else{
+    handleNext()
+  }
+
+}
+
+const steptwoval = (e) =>{
+  e.preventDefault()
+
+  if(!name){
+    setNameError( 'Name required')
+  } else if(!dob){
+    setDateError('Date of Birth required')
+  }
+}
+
+  //--------------------------------------------
 
   const google = () => {
     window.open("http://localhost:5000/auth/google", "_self");
@@ -141,7 +234,8 @@ const Signup = (props) => {
       variant="outlined"
       className='bg-transparent text-white hover:bg-transparent hover:border-orange-400 focus:border-orange-400'
       />
-        <button onClick={handleNext}  className="w-full mt-6  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
+      <div className='opacity-60 font-thin text-xs text-white'>{emailError}</div>
+        <button onClick={emailval}  className="w-full mt-6  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
          Next
         </button>
       </Form.Item>
@@ -191,7 +285,9 @@ const Signup = (props) => {
         className='bg-transparent text-white focus:border-orange-400 hover:border-orange-400 outline-none pass'
         iconRender={(visible) => (visible ? <EyeOutlined style={{color:' rgb(251 146 60 )'}} /> : <EyeInvisibleOutlined  style={{color:' rgb(251 146 60 )'}}/>)}
       />
+        <div className='opacity-60 font-thin text-xs text-white'>{passwordError}</div>
       </Form.Item>
+    
       <Form.Item className='text-white flex flex-col gap-2' >
       Your password must contain at least
       <div  className='text-white flex flex-col gap-2' >
@@ -201,7 +297,7 @@ const Signup = (props) => {
         </div>
       </Form.Item>
         <Form.Item >
-        <button onClick={handleNext} className="w-full  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
+        <button onClick={passwordval} className="w-full  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
          Next
         </button>
        
@@ -222,6 +318,7 @@ const Signup = (props) => {
       <Form.Item 
          label="Name">
         <Input 
+        onChange={onName}
          style={{background:' none' }}
         variant="outlined"
         className='bg-transparent text-white hover:bg-transparent hover:border-orange-400 focus:border-orange-400'
@@ -267,7 +364,7 @@ const Signup = (props) => {
        </div>        
       <Form  layout="vertical" className=' mt-4'>
       <Form.Item className='text-white flex flex-col gap-2  hover:border-orange-400' >
-        <Select 
+        <Select
         placeholder="How did you hear about us?"
       
         onChange={selectChange}
@@ -306,7 +403,7 @@ const Signup = (props) => {
         </Form.Item>
 
           <Form.Item >
-          <button className="w-full  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
+          <button onClick={handleSubmit}  className="w-full  hover:bg-orange-400 bg-orange-600 p-2 rounded-3xl text-white border-0">
            Sign up
           </button>
          
@@ -345,7 +442,7 @@ const Signup = (props) => {
       }}
     >
        
-        <div className='bg-gray-900 flex flex-col gap-5 justify-center items-center w-screen h-full left-0 absolute'>
+        <div  style={{ backgroundImage:`url(${bg})` }} className='bg-cover flex flex-col gap-5 justify-center items-center w-screen h-full left-0 absolute'>
         <img src={icon} className='w-32'/>
             <div className='border-solid border-2 flex flex-col justify-center items-center  border-#fff p-6 rounded-3xl'>
               <p className='text-2xl text-white '>Sign up</p>
@@ -539,9 +636,9 @@ const Signup = (props) => {
                 </div> */}
               </div>
              
-                <div className='relative'>
+                <form  className='relative'>
                   {step[steps].step }
-                </div>
+                </form >
              
 
             

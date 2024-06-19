@@ -470,4 +470,22 @@ width: 70%;
     padding: 20px;
     align-items: center;}
 
+.footerdiv a{
+    padding : 0px
+}
+
+.terms p{
+    font-weight: lighter;
+    font-family: 18px;
+}
+
+.terms div {
+    margin-top: 80px;
+}
+
+.terms h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
    
