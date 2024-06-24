@@ -2,18 +2,17 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const AppleStrategy = require("passport-apple").Strategy;
 const passport = require("passport");
+require('dotenv').config();
 
 
 
-const GOOGLE_CLIENT_ID ="831132307672-lgjaaf65hsb06dqn5i99pmhvarhc3hu9.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+const GOOGLE_CLIENT_ID =process.env.GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_SECRET =process.env.GOOGLE_CLIENT_SECRET
 
 
-const APPLE_CLIENT_ID ="your id";
-const APPLE_CLIENT_SECRET = "your id";
-
-FACEBOOK_APP_ID = "7654500564669253";
-FACEBOOK_APP_SECRET = "00cc41900a8203ec36363efeb6cddf75";
+const FACEBOOK_APP_ID =  process.env.FACEBOOK_APP_ID
+const FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_SECRET
+;
 
 
 passport.use(
