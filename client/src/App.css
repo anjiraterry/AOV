@@ -51,7 +51,9 @@ a:hover{
 }
 
 
-
+input{
+    @apply bg-transparent text-white focus:border-orange-400 hover:border-orange-400 outline-none !important
+}
 
 
  a{
@@ -130,27 +132,10 @@ a:hover{
   }
 
   
-  [title="Password"] {
+  [title= "Name"] {
     color: white !important;
     font-weight: 500 !important;
   }
-  [title="Name"] {
-    color: white !important;
-    font-weight: 500 !important;
-  }
-  [title="Date of Birth"] {
-    color: white !important;
-    font-weight: 500 !important;
-  }
-  [title="Gender"] {
-    color: white !important;
-    font-weight: 500 !important;
-  }
-  [title="Phone Number"] {
-    color: white !important;
-    font-weight: 500 !important;
-  }
-
   
 
 
@@ -495,4 +480,24 @@ width: 70%;
     font-weight: bold;
     margin-bottom: 10px;
 }
-   
+.dash a {
+    color: black
+}
+
+.dashmenu div{
+    @apply  rounded-3xl px-8 py-3
+}
+
+.ref div div {
+    @apply rounded-full w-48 h-48 border-2 bg-[#494949] bg-opacity-40
+}
+
+.ref div {
+    @apply flex flex-col items-center gap-4
+}
+
+.ref div div div{
+    @apply text-7xl  flex items-center justify-center
+}
+
+

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "http://localhost:3000/dashboard";
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
@@ -26,7 +26,7 @@ router.get("/logout", (req, res) => {
   res.redirect(CLIENT_URL);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 router.get(
   "/google/callback",
@@ -37,7 +37,7 @@ router.get(
 );
 
 
-router.get("/facebook", passport.authenticate("facebook"));
+router.get("/facebook", passport.authenticate("facebook" ,{scope: ['email']}));
 
 router.get(
   "/facebook/callback",

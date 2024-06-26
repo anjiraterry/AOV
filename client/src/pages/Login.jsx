@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {ConfigProvider, Input , Form, Checkbox, Button } from 'antd';
 import {  EyeInvisibleOutlined, EyeOutlined, GoogleCircleFilled, FacebookFilled, AppleFilled } from "@ant-design/icons";
 import bg from '../images/bg.jpeg'
+import axios from 'axios';
 
 
 const Login = () => {
@@ -27,11 +28,51 @@ const Login = () => {
     window.open("http://localhost:8000/auth/facebook", "_self");
   };
 
-  const apple = () => {
-    window.open("http://localhost:8000/auth/apple", "_self");
-  };
+
 
   const [passwordVisible, setPasswordVisible] = React.useState(false);
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    const User = {
+      email: email,
+      password: password,
+     
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:8000/api/login', User, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response.data);
+      // Handle success, e.g., redirect to another page or show a success message
+      alert('User registered successfully');
+    } catch (error) {
+      console.error('There was an error registering the user!', error);
+      // Handle error, e.g., show an error message
+      alert('Error registering user');
+    }
+  
+  };
+
+  const [emailError,setEmailError] = useState("")
+  const emailval =(e) =>{
+    e.preventDefault()
+   
+     if (!email) {
+     setEmailError( 'Email required')
+     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      setEmailError('Invalid email address')
+     } else{
+      
+     }
+   }
+   
+
 
 
   const style = {
@@ -111,7 +152,7 @@ const Login = () => {
      
                   </Form.Item>
                   <Form.Item >
-                  <button className="w-full hover:text-orange-400 hover:bg-white bg-orange-600 p-2 rounded-3xl text-white border-0">
+                  <button  onClick={ handleSubmit}  className="w-full hover:text-orange-400 hover:bg-white bg-orange-600 p-2 rounded-3xl text-white border-0">
                    Log in
                   </button>
                  

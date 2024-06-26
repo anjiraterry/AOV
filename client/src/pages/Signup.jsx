@@ -108,7 +108,7 @@ const onName = (e) => {
     };
   
     try {
-      const response = await axios.post('http://localhost:8080/api/register', newUser, {
+      const response = await axios.post('http://localhost:8000/api/register', newUser, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -313,11 +313,11 @@ if(term === false){
   //Passport js Signin options
 
   const google = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    window.open("http://localhost:8000/auth/google", "_self");
   };
 
   const facebook = () => {
-    window.open("http://localhost:5000/auth/facebook", "_self");
+    window.open("http://localhost:8000/auth/facebook", "_self");
   };
 
 

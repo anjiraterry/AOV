@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-import ENV from '../config.js';
+const mongoose = require('mongoose');
 
 async function connect() {
   mongoose.set('strictQuery', true);
@@ -17,4 +16,4 @@ async function connect() {
   }
 }
 
-export default connect;
+module.exports = connect;
