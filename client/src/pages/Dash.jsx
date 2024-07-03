@@ -33,7 +33,7 @@ const Dash = () => {
     <div style={{ backgroundImage:`url(${bg})` }}>
       <DashNav/>
     
-      <div className='flex text-white p-4 '>
+      <div className='flex text-white pt-4 '>
         <div className=' flex flex-col gap-8 text-sm h-full p-20  mt-4 border-r-2 white '>
     
         <div className=' border-b-2 pb-8  flex flex-col gap-4 dashmenu' >

@@ -10,7 +10,8 @@ const Terms = () => {
         <h1 className='text-5xl font-bold '>Terms & Conditions</h1>
         <p>Our Legal terms and conditions</p>
       </div>
-      <div>
+      <div className='text'>
+      <div >
         <h3>Agreement between <br/> User and myaov.com</h3>
         <p>Welcome to myaov.com. The myaov.com website (the "Site") is comprised of various web pages operated by Alexis Ojere Ventures ltd ("AOVenture").
            myaov.com is offered to you conditioned on your acceptance without modification of the terms, conditions, and notices contained herein (the "Terms"). 
@@ -143,6 +144,7 @@ const Terms = () => {
       <div>
          <h3>Contact Us </h3>
         <p>AOVenture welcomes your questions or comments regarding the Terms. <Link to="/contact">Contact Us</Link></p>
+      </div>
       </div>
     </div>
   )

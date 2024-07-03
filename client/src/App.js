@@ -3,8 +3,8 @@ import { Routes , Route, Link ,useLocation } from 'react-router-dom'
 import {Layout, Typography, Space} from 'antd'
 import { useState } from 'react'
 import './App.css'
-import {Navbar, Exchanges, Cryptocurrencies , News, CryptoDetails,} from './components'
-import {Login, Signup, Home,  About, Faq , Contact, Terms  } from './pages'
+import {Navbar, Exchanges, Cryptocurrencies , News, CryptoDetails, } from './components'
+import {Login, Signup, Home,  About, Faq , Contact, Terms , Kyc } from './pages'
 import Footer from './components/Footer'
 import Dash from './pages/Dash'
 
@@ -17,7 +17,7 @@ import Dash from './pages/Dash'
 const App = () => {
    
   const location = useLocation();
-  const noNavbarRoutes = ['/login', '/signup', '/dashboard']; // Add any other routes where you don't want the navbar
+  const noNavbarRoutes = ['/login', '/signup', '/dashboard', '/kyc']; // Add any other routes where you don't want the navbar
 
 
   return (
@@ -43,6 +43,9 @@ const App = () => {
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/crypto/:coinId' element={<CryptoDetails />} />
               <Route exact path='/news' element={<News />} />
+              <Route exact path='/kyc' element={<Kyc/>} />
+              
+
             </Routes>
           </div>
         </Layout>

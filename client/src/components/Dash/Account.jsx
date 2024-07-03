@@ -7,7 +7,7 @@ import Input from 'antd/es/input/Input'
 const Account = () => {
   return (
     <div className='p-20 mt-2'>
-      <h1 className='text-3xl font-bold mb-10'>Account Settings</h1>
+      <h1 className='text-3xl font-bold mb-4'>Account Settings</h1>
       <p className=' font-thin mb-2 text-lg'>My profile</p>
       <div className='border-2 p-12 rounded-3xl flex flex-col gap-12 '>
       
@@ -39,7 +39,7 @@ const Account = () => {
           </Form.Item>
           </div>
           <div className=' flex justify-between gap-4'>
-          <Form.Item label="Email Address" className="flex-1">
+          <Form.Item label="Email" className="flex-1">
             <Input/>
           </Form.Item>
           <Form.Item  label="Date of Birth" className="flex-2">

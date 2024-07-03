@@ -8,7 +8,7 @@ export {default as Referral } from './Referral';
 export {default as  SellGiftCard} from './SellGiftCard';
 export {default as  Transactions} from './Transactions';
 export {default as  Withdrawal} from './Withdrawal';
-
-
+export {default as GiftCards} from './Transactions/GiftCards'
+export  {default as Cryoto} from './Transactions/Crypto'
 
 

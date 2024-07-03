@@ -1,10 +1,54 @@
 import React from 'react'
 import { CopyOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, WhatsAppOutlined, XOutlined } from '@ant-design/icons'
+import {Input, Table } from 'antd';
+
 
 const Referral = () => {
+  const columns = [
+    {
+
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+     
+      dataIndex: 'date',
+      key: 'date',
+    },
+    {
+    
+      dataIndex: 'amount',
+      key: 'amount',
+    },]
+
+
+const transactions =[{
+      
+       content :[{
+                 name : "Felix Ajibade" ,
+                 date: 	"June 20th, 2024",
+                 amount: "₦2,000"
+                 },
+                 {
+                  name : "Maxwell Linus" ,
+                  date: 	"June 20th, 2024",
+                  amount: "₦2,000"
+                 },
+                 {
+                  name : "Samuel Akinyele" ,
+                  date: 	"June 20th, 2024",
+                  amount: "₦2,000"
+                 },
+       
+    ]
+    }, 
+    
+
+
+]
   return (
-    <div className='p-20 mt-2 text-lg font-thin '>
-    <h1 className='text-3xl font-bold mb-6'>Refer friends. <br/>Earn together</h1>
+    <div className='pt-20  px-20 mt-2 text-lg font-thin '>
+    <h1 className='text-3xl font-bold mb-4'>Refer friends. <br/>Earn together</h1>
     <div className='flex justify-between gap-24 border-b-2 pb-24 '>
     <p className='flex-1  '>
       When they trade gift cards that the total worth is up to ₦140,000.
@@ -28,7 +72,7 @@ const Referral = () => {
         </div>
        </div>
        </div>
-       <div className='flex flex-col gap-8 mt-8 items-center '>
+       <div className='flex flex-col gap-8 mt-8 items-center mb-16 '>
        <p className='font-bold'>Your Referral Statistics</p>
        <div className='ref flex gap-24 items-center justify-between'>
         <div>
@@ -44,8 +88,23 @@ const Referral = () => {
           <p>Transactions</p>
         </div>
        </div>
-       <div></div>
+     
         <div></div>
+       </div>
+       <div>
+       <p className='font-bold mb-4'>Referal Link & Code</p>
+       <div className=' p-20 rounded-t-xl  bg-white'> 
+       <div><Input  className='text-black  border-gray-400'/> </div>
+       
+       {transactions.map((transaction, index ) =>(
+          <div   key={index} >
+   <Table  columns={columns} dataSource={transaction.content} pagination={false} />
+   </div>
+     ))}
+  
+       <div>
+
+       </div></div>
        </div>
     </div>
   )
