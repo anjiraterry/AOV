@@ -15,14 +15,14 @@ const Footer = () => {
         <div className='flex justify-between gap-24'>
           <div className='text-white font-thin flex flex-col '>
             <h3 className='font-bold text-white text-xl'>Quick Links</h3>
-            <Link>Login</Link>
-            <Link>Register</Link>
-            <Link>Faqs</Link>
+            <Link to='/login'>Login</Link>
+            <Link to="/register">Register</Link>
+            <Link to='/faq'>Faqs</Link>
           </div>
           <div className='text-white font-thin flex flex-col '>
           <h3 className='font-bold text-white text-xl'>Company</h3>
-            <Link>Contact</Link>
-            <Link>About Us</Link>
+            <Link to='/contact'>Contact</Link>
+            <Link to='/about'>About Us</Link>
            </div>
           <div  className='text-white font-thin flex flex-col '>
             <h3 className='font-bold text-white text-xl'>Legal</h3>

@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const AppleStrategy = require("passport-apple").Strategy;
 const passport = require("passport");
-const UserAuth = require('./model/UserAuth.model.js')
+const UserModel = require('./model/User.model.js');
 require('dotenv').config();
 
 
@@ -25,9 +25,9 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       console.log(profile._json);
       try {
-          let user = await UserAuth.findOne({ googleId: profile.id });
+          let user = await UserModel.findOne({ googleId: profile.id });
           if (!user) {
-              user = new UserAuth({
+              user = new UserModel({
                   googleId: profile._json.sub,
                   name: profile._json.name,
                   email: profile._json.email,
@@ -52,9 +52,9 @@ passport.use(
     }, async (accessToken, refreshToken, profile, done) => {
         console.log(profile._json); // Log the profile object to inspect the data
         try {
-            let user = await UserAuth.findOne({ facebookId: profile.id });
+            let user = await UserModel.findOne({ facebookId: profile.id });
             if (!user) {
-                user = new UserAuth({
+                user = new UserModel({
                     facebookId: profile._json.id,
                     name: profile._json.name,
                     email: profile._json.email, // Ensure 'emails' field is requested
@@ -74,7 +74,7 @@ passport.use(
     
     passport.deserializeUser(async (id, done) => {
         try {
-            const user = await UserAuth.findById(id);
+            const user = await UserModel.findById(id);
             done(null, user);
         } catch (err) {
             done(err, null);

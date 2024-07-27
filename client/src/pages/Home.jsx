@@ -10,13 +10,15 @@ import Rates from '../components/Rates';
 import bg from '../images/bg.jpeg'
 import bg2 from  '../images/bgwhite.jpeg'
 
+
 const{Title} = Typography
 
 const Home = () => {
     const{ data, isFetching} = useGetCryptosQuery(10)
     const globalStats = data?.data?.stats;
 
-    if(isFetching) return 'Loading...'
+   
+
  
 
   return (

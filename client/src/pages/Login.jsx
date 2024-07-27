@@ -1,5 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import React, { useState, useContext , useEffect} from 'react';
 import icon from '../images/aov.png'
 import { Link } from 'react-router-dom';
 import {ConfigProvider, Input , Form, Checkbox, Button } from 'antd';
@@ -9,6 +11,17 @@ import axios from 'axios';
 
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { login ,auth } = useContext(AuthContext);
+  const [rememberMe, setRememberMe] = useState(false);
+
+
+  useEffect(() => {
+    if (auth.isLoggedIn) {
+      navigate('/dashboard');
+    }
+  }, [auth.isLoggedIn, navigate]);
+  
 
   const [email, setEmail] = useState('');
   const [password , setPassword] = useState('');
@@ -35,13 +48,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const User = {
       email: email,
       password: password,
-     
     };
-  
+
     try {
       const response = await axios.post('http://localhost:8000/api/login', User, {
         headers: {
@@ -49,14 +61,16 @@ const Login = () => {
         },
       });
       console.log(response.data);
-      // Handle success, e.g., redirect to another page or show a success message
-      alert('User registered successfully');
+
+      // Use the login function from AuthContext to handle token storage
+      login(response.data.token, rememberMe);
+
+      navigate('/dashboard');
+      console.log('User logged in successfully');
     } catch (error) {
-      console.error('There was an error registering the user!', error);
-      // Handle error, e.g., show an error message
-      alert('Error registering user');
+      console.error('There was an error logging the user!', error);
+      console.log('Error logging user');
     }
-  
   };
 
   const [emailError,setEmailError] = useState("")
@@ -101,7 +115,7 @@ const Login = () => {
     >
        
         <div style={{ backgroundImage:`url(${bg})` }} className='bg-cover flex flex-col gap-5 justify-center items-center w-screen h-screen left-0 absolute'>
-        <img src={icon} className='w-32'/>
+       <Link to="/"><img src={icon} className='w-32'/> </Link> 
             <div className='border-solid border-2 flex flex-col justify-center items-center  border-#fff p-6 rounded-3xl'>
               <p className='text-2xl text-white '>Sign in</p>
               <p className='text-md font-thin text-white '> Pick up where you left off.</p>
@@ -145,7 +159,7 @@ const Login = () => {
                 />
                 </Form.Item>
                 <Form.Item className='flex items-center justify-between gap-8 '>
-                  <Checkbox  className='text-white '>Remember me</Checkbox>
+                  <Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)}  className='text-white '>Remember me</Checkbox>
                   <Link className="hover:text-orange-400" href="">
                    Forgot password?
                   </Link>

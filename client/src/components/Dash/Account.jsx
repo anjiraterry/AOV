@@ -54,7 +54,7 @@ const Account = () => {
           <Form.Item label="Nationality" className="flex-2">
             <Input/>
           </Form.Item>
-          <Form.Item label="Mobile" className="flex-1">
+          <Form.Item label="Phone Number" className="flex-1">
             <Input/>
           </Form.Item>
 

@@ -44,9 +44,9 @@ const Section = () => {
 ]
 
   return (
-    <div className='p-24'>
-        <div  className='  bg-opacity-60 border-2 border-white p-10  text-white flex  relative justify-between rounded-3xl '>
-            <div className=' border-white border-r-2  p-8' >
+    <div className='md:p-24 min-[100px]:p-8'>
+        <div  className='  bg-opacity-60 border-2 border-white p-10  text-white flex min-[100px]:flex-col md:flex-row relative justify-between rounded-3xl '>
+            <div className=' border-white md:border-r-2 md:border-b-0 min-[100px]:border-b-2  min-[100px]:px-0 p-8' >
                 <h1 className='text-3xl mb-4 font-bold'> Why Trade with AOV? </h1>
                 <p className='font-thin'>
                     At AOV, we prioritize transparency, ensuring your trades are not only efficient
@@ -54,20 +54,20 @@ const Section = () => {
                     We pride ourselves on offering competitive rates,
                     maximizing the value of your gift cards and cryptocurrencies
                 </p>
-                <img src={require( '../images/shield.png')} className='absolute bottom-0 w-72'/>
+                <img src={require( '../images/shield.png')} className='absolute bottom-0    min-[100px]:hidden md:block w-64'/>
 
             </div>
-            <div className='p-10 flex flex-col gap-4 '>
-                <div   className='flex justify-between gap-6 '>
+            <div className='md:p-10  min-[100px]:p-0  min-[100px]:py-4 flex flex-col gap-6 '>
+                <div   className='flex justify-between gap-2 '>
                     <div>
-                    <SafetyOutlined className='text-3xl border-2 p-2 rounded-full bg-white text-gray-900'/>
+                    <SafetyOutlined className='md:text-3xl  min-[100px]:text-xl  border-2 p-2 rounded-full bg-white text-gray-900'/>
                     </div>
                     <div className='flex flex-col '>
                     <h3 className='text-lg mb-1 font-bold'>Secured User Data</h3>
                     <p className='font-thin'>
                         We understand that secure user data is of the utmost importance.
                         We take great care to ensure that our platform is secure and that your data is protected.
-                        We have agreements with trusted third-party providers to ensure that your data is stored,
+                        We have agreements with trusted third-party xsproviders to ensure that your data is stored,
                         analyzed, and processed in a secure manner. We also recommend that you take additional steps to protect your account, 
                         such as verifying your contact information. If you have any questions or concerns about data security,
                         please don't hesitate to contact us.
@@ -75,9 +75,9 @@ const Section = () => {
                      </div>
 
                 </div>
-                 <div   className='flex justify-between gap-6 '>
+                 <div   className='flex justify-between gap-2 '>
                     <div>
-                <BarChartOutlined className='text-3xl border-2 p-2 rounded-full bg-white text-gray-900'/> </div>
+                <BarChartOutlined className='md:text-3xl    min-[100px]:text-xl  border-2 p-2 rounded-full bg-white text-gray-900'/> </div>
                 <div className='flex flex-col '>
                     <h3 className='text-lg mb-1 font-bold'>Credibility</h3>
                     <p className='font-thin'>
@@ -88,9 +88,9 @@ const Section = () => {
                     </div>
 
                 </div>
-                <div   className='flex justify-between gap-6 '>
+                <div   className='flex justify-between gap-2 '>
                 <div>
-                <UserOutlined className='text-3xl border-2 p-2 rounded-full bg-white text-gray-900'/> 
+                <UserOutlined className='md:text-3xl   min-[100px]:text-xl   border-2 p-2 rounded-full bg-white text-gray-900'/> 
                 </div>
                 <div className='flex flex-col '>
                     <h3 className='text-lg mb-1 font-bold'>User Friendly and Accessible</h3>

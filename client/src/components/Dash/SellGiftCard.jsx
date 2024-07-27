@@ -11,7 +11,7 @@ import ebay from '../../images/ebay.png'
 import macys from '../../images/macys.png'
 import visa from '../../images/visa.png'
 import razer from '../../images/razer.png'
-import nordstorm from '../../images/apple.png'
+import usa from '../../images/usa.png'
 import amazon from '../../images/amazon.png'
 import Input from 'antd/es/input/Input'
 import { SearchOutlined } from '@ant-design/icons'
@@ -95,6 +95,7 @@ const SellGiftCard = () => {
 ]
 const [selected, setSelected] = useState(0);
   return (
+    <div>
     <div className='p-20 mt-2'>
     <div className='flex justify-between gap-16 items-center '>
     <div className='flex items-center  gap-4 '>
@@ -115,9 +116,9 @@ const [selected, setSelected] = useState(0);
         <div
           key={index}
           onClick={() => setSelected(index)}
-         className='border p-12 w-40 h-60 flex flex-col items-center justify-center'
+         className='border p-12 w-40 h-60 flex flex-col items-center justify-center hover:bg-slate-600'
         >
-          <div className='flex flex-col gap-4 w-32 items-center justify-center'>
+          <div className='flex flex-col gap-4 w-32 items-center justify-center '>
             <img src={item.img} className=''/> 
            
           
@@ -125,6 +126,33 @@ const [selected, setSelected] = useState(0);
           <p className='text-xs text-center'>{item.name}</p>
         </div>
       ))}
+    </div>
+    </div>
+    </div>
+    <div>
+    <div className='flex items-center  gap-4 '>
+    <div className='bg-[#D9D9D9] rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold text-black'>2</div>
+    <div>
+    <h1 className='text-3xl font-bold mb-4'>Step 2: Select Country</h1>
+    <p className=' font-thin mb-2 text-lg'>Select the country of the gift card. The card will be traded with the currency of the selected country.<br/> You will be paid using our current exchange rate of the currency you selected</p>
+    </div>
+  
+    </div>
+    <div className=' px-20 flex gap-12'>
+      <div className='flex flex-col p-2 items-center justify-center'>
+      <div className='bg-gray-600 p-2'>
+        <img src={usa} />
+        <p>United States</p>
+      </div>
+      <p>USD</p>
+      </div>
+      <div className='flex flex-col p-2 items-center justify-center'>
+      <div className='bg-gray-600 p-2'>
+        <img src={usa} />
+        <p>United States</p>
+      </div>
+      <p>USD</p>
+      </div>
     </div>
     </div>
     </div>

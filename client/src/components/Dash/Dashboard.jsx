@@ -7,21 +7,33 @@ import desc2 from '../../images/desc2.png'
 import {FaBitcoin, FaChevronCircleLeft, FaChevronCircleRight} from "react-icons/fa"
 import {MdCall, MdCardGiftcard, MdOutlineCardGiftcard, MdRateReview}from "react-icons/md"
 import {TbGiftCardFilled } from "react-icons/tb"
+import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+
 
 const Dashboard = () => {
+  const kycsteps = useSelector(state => state.kycsteps);
+
+  
+
   return (
     <div className='p-20 mt-2 text-lg font-thin'>
       <div className='flex flex-col gap-2'>
       <h1 className='text-3xl font-bold flex s'>Welcome Alexis</h1>
         <p className='mb-4'>An overview of your current account status</p>
-        <h2 className='font-bold '>Reminder to Complete your <Link className='p-0 underline'>KYC Verification</Link> <ArrowRightOutlined/> </h2>
-        <div className='kyc'>
-          <div className='quarter'></div>
-          <div className='half'></div>
-          <div className='threequater'></div>
-          <div className='full'></div>
-        </div>
-        <p> 25%, You’re almost there</p>
+        {kycsteps.steppercentage === "100%" ? (
+          <div></div>
+        ) :(  <div>
+          <h2 className='font-bold '>Reminder to Complete your <Link to='/kyc' className='p-0 underline'>KYC Verification</Link> <ArrowRightOutlined/> </h2>
+         
+          <div className='kyc'>
+          <div className={classNames(kycsteps?.step1)}></div>
+            <div className={classNames(kycsteps?.step2)}></div>
+            <div className={classNames(kycsteps?.step3)}></div>
+            <div className={classNames(kycsteps?.step4)}></div>
+          </div>
+          <p> {kycsteps.steppercentage}</p>
+          </div>)}
       </div>
       <div>
         <div style={{ backgroundImage:`url(${bg})` }} className='py-12 px-40 border-white border-2 font-normal rounded-2xl mt-16 pl-24  bg-cover bg-[100%] '>

@@ -1,4 +1,4 @@
-const mongoose= require("mongoose");
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   email: {
@@ -27,6 +27,41 @@ const UserSchema = new mongoose.Schema({
   select: {
     type: String,
     // Specify any additional validation or default values if needed
+  },
+  bank: {
+    type: String,
+    trim: true
+  },
+  accountNo: {
+    type: String,
+    trim: true
+  },
+  firstName: {
+    type: String,
+    trim: true
+  },
+  lastName: {
+    type: String,
+    trim: true
+  },
+  number: {
+    type: String,
+    trim: true
+  },
+  bvn: {
+    type: String,
+    trim: true
+  },
+  gender: {
+    type: Number
+  },
+  country: {
+    type: String,
+    trim: true
+  },
+  location: {
+    type: String,
+    trim: true
   }
 });
 

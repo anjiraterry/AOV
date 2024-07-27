@@ -40,7 +40,7 @@ html, body { margin: 0; }
 }
 
 a:hover{
-    color: var(--pink) !important;
+    color: var(--pink) ;
 }
 
 .app{
@@ -110,12 +110,23 @@ input{
   }
 
   .ant-select-selector:hover{
+    border : red!important;
+    outline: #fb923c  !important;
+    
+  }
+
+
+  .ant-select-selector:focus{
     border : #fb923c  !important;
+   
   }
 
   .ant-select-arrow{
     color:#fb923c  !important;
 
+  }
+  .ant-select-outline{
+    border : 1px #fb923c  !important;
   }
 
   .ant-select-selection-item{
@@ -127,16 +138,37 @@ input{
   }
   
 
-[title= "Email"] {
+[title= "Email"] ,
+[title= "Name"],
+[title= "First Name"],
+[title= "Last Name"],
+[title= "Select Bank"],
+[title= "Account Number"],
+[title= "Location"],
+[title= "Gender"],
+[title= "Date of Birth"],
+[title= "Phone Number"],
+[title= "Password"],
+[title= "Nationality"],
+[title= "BVN"],
+[title= "Subject"],
+[title= "Message"],
+[title= "Phone"],
+[title= "Country"]
+{
     color: white !important;
   }
 
   
-  [title]  {
+  /* [title]  {
     color: white !important; 
     font-weight: 500 !important;
+  } */
+
+
+ .ant-spin-dot i {
+   background-color: #ff6600 !important; /* Replace this with your desired color */
   }
-  
 
 
 
@@ -156,6 +188,11 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hero a:hover{
+    color: #fff;
+
 }
 
 
@@ -186,6 +223,9 @@ input{
 
     .navbar{
         flex: 1;
+    }
+    .sidebar{
+        position: sticky;
     }
 
     .main{
@@ -446,7 +486,26 @@ width: 70%;
 }
 .crypto-card{
     min-width: 250px;
+   
 }
+
+.ant-card{
+    background: none !important;
+    color:white !important
+}
+
+
+.ant-card:hover{
+   box-shadow: 0 0 20px rgba(255, 165, 0, 0.5); /* Orange glow */
+            transition: box-shadow 0.3s ease-in-out;
+    
+}
+
+.ant-card-head{
+    color:white !important
+}
+
+
 .crypto-card .crypto-image{
     width:35px;
 }
@@ -521,6 +580,15 @@ width: 70%;
 .quarter{
     @apply border-orange-600
 }
+.half{
+    @apply border-orange-600
+}
+.threeQuater{
+    @apply border-orange-600
+}
+.full{
+    @apply border-orange-600
+}
 
 .dashsection .cont {
     @apply flex gap-4 items-center p-6 border-black
@@ -550,3 +618,15 @@ width: 70%;
 .contact a {
  @apply text-2xl mr-4 text-black p-0  border rounded-full px-2 py-2 border-black 
 }
+
+
+  
+  /* Override button styles */
+  .phone-input-button {
+    /* Your custom styles */
+  }
+  
+  /* Override container styles */
+  .green {
+    @apply bg-red-700
+  }

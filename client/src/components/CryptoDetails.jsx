@@ -40,7 +40,7 @@ const CryptoDetails = () => {
   ];
 
   return (
-    <Col className="coin-detail-container">
+    <Col className="coin-detail-container p-32">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
           {data?.data?.coin.name} ({data?.data?.coin.symbol}) Price

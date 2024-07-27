@@ -7,7 +7,7 @@ import { Button, Badge, Avatar } from 'antd';
 import moment from 'moment';
 import bg from '../../images/bg.jpeg'
 
-const DashNav = () => {
+const DashNav = ({ userData }) => {
   const [notificationCount, setNotificationCount] = useState(5);
   const logout = () => {
     window.open("http://localhost:5000/auth/logout", "_self");
@@ -55,6 +55,7 @@ const DashNav = () => {
         <div className='text-black flex items-center justify-between  '>
           <div className='flex items-center justify-between border-r-4 pr-8'>
                 <Link to = "/" > Home</Link>
+                <Link to = "/dashboard" > Dashboard</Link>
                 <p className='px-4'>{formattedDate}</p>
          
                 <Badge count={notificationCount} offset={[2, 0]}>
@@ -62,7 +63,7 @@ const DashNav = () => {
                  </Badge>
           </div>
           <div className='flex items-center justify-between'>
-            <p className=' px-4'>Alexis Ojere</p>
+            <p className=' px-4'>{userData? userData.name : ""}</p>
             <Avatar style={{ backgroundColor: '#87d068', marginRight: '20px' }} icon={<UserOutlined />} />
           </div>
                

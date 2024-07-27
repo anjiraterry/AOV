@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input } from 'antd';
-
+import bg from '../images/bg.png'
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 
@@ -23,16 +23,16 @@ const Cryptocurrencies = ({ simplified }) => {
   if (isFetching) return <Loader />;
 
   return (
-    <>
+    < div style={{ backgroundImage:`url(${bg})` }} className='p-32'>
       {!simplified && (
         <div className="search-crypto">
-          <Input
+          <Input className='placeholder-gray-400'
             placeholder="Search Cryptocurrency"
             onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
           />
         </div>
       )}
-      <Row gutter={[32, 32]} className="crypto-card-container">
+      <Row  gutter={[32, 32]} className="crypto-card-container ">
         {cryptos?.map((currency) => (
           <Col
             xs={24}
@@ -47,7 +47,7 @@ const Cryptocurrencies = ({ simplified }) => {
               <Card
                 title={`${currency.rank}. ${currency.name}`}
                 extra={<img className="crypto-image" src={currency.iconUrl} />}
-                hoverable
+               
               >
                 <p>Price: {millify(currency.price)}</p>
                 <p>Market Cap: {millify(currency.marketCap)}</p>
@@ -57,7 +57,7 @@ const Cryptocurrencies = ({ simplified }) => {
           </Col>
         ))}
       </Row>
-    </>
+    </div>
   );
 };
 

@@ -113,15 +113,33 @@ const onName = (e) => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data);
-      // Handle success, e.g., redirect to another page or show a success message
-      alert('User registered successfully');
+  
+      if (response.data) {
+        // After successful registration, log the user in
+        const loginResponse = await axios.post('http://localhost:8000/api/login', {
+          email: email,
+          password: password,
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (loginResponse.data) {
+          // Store token or user data as needed, e.g., in localStorage
+          localStorage.setItem('token', loginResponse.data.token);
+          // Navigate to the desired page, e.g., dashboard
+          navigate('/dashboard');
+        } else {
+          alert('Login failed after registration');
+        }
+      } else {
+        alert('Registration failed');
+      }
     } catch (error) {
       console.error('There was an error registering the user!', error);
-      // Handle error, e.g., show an error message
       alert('Error registering user');
     }
-  
   };
 
   
@@ -442,7 +460,7 @@ if(term === false){
        
         
         <Form.Item  label="Gender" className='text-white flex flex-col gap-2' >
-        <p className='text-xs opacity-80 mb-4'> We use your gender to help personalize our <br/> content recommendations and ads for you you.</p>
+        <p className='text-xs opacity-80 mb-4'> We use your gender to help personalize our <br/> content recommendations and ads for you.</p>
         <div  className='text-white flex flex-col gap-2' >
          <Radio.Group onChange={onRadio} value={value} className='flex gap-2 text-white'>
             <Radio className='text-white' value={1}>Man</Radio>
